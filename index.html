@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <header class="mt-5 text-center">
+            <h1>MM logo</h1>
+        </header>
+        <main class="w-100 m-auto px-5">
+            <form>
+                <label for="number">N:</label>
+                <input type="number" id="number" name="number" min="2" max="10000" required>
+                <button  onclick="drawLogo()" type="button" class="btn btn-light">Submit</button>
+                <button  onclick="deleteLogo()" type="button" class="btn btn-dark">Delete</button>
+            </form>
+            <div id="canvas"></div>
+        </main>
+        <footer></footer>
+        <script src="mm-logo.js" ></script>
+    </body>
+</html>
