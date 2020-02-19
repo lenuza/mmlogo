@@ -8,7 +8,7 @@ function drawLogo () {
                     genCompStair(n),
                     genCompTwo(n),
                     flipVertCompTwo(n),
-                    flipHorizontally(genCompStair())
+                    flipHorizontallyStair(n)
                 );
     }
 }
@@ -40,8 +40,15 @@ function genCompTwo (n) {
     return compTwo;
 }
 
-function flipHorizontally (comp) {
+function flipHorizontallyStair (n) {
+    var flipStair = [];
 
+    for(var y = n; y >= 0; y--) {
+        flipStair = flipStair.concat(('*').repeat(n - y).concat(('-').repeat(n - (n - y)))) + '\n';
+    }
+    flipStair
+    console.log(flipStair)
+    return flipStair;
 }
 
 function flipVertCompTwo (n) {
