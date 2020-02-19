@@ -11,7 +11,7 @@ function drawLogo () {
                 flipHorizontallyStair(n)
             );
 
-        console.log('N = ' + (document.getElementById('number').value));
+        console.log('N = ' + n);
         console.log(merged);
 
         document.getElementById('canvas').innerHTML = merged.replace(/\n/g, '<br>');
