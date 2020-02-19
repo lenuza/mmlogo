@@ -1,101 +1,79 @@
-function drawLogo() {
-    var n = document.getElementById('number').value;
+function drawLogo () {
+    var n = +(document.getElementById('number').value);
 
     if(n%2 != 0 && n > 0 && n < 10000) {
-        document.getElementById('one').innerHTML =
-        ('-').repeat(n) + ('*').repeat(n-n) + '<br>'
 
-        + ('-').repeat(n-1) + ('*').repeat(n-2) + '<br>'
-
-        + ('-').repeat(n-2) + ('*').repeat(n-1) + '<br>'
-
-        + ('-').repeat(n-n) + ('*').repeat(n);
-
-        document.getElementById('two').innerHTML =
-        ('-').repeat(n) + ('*').repeat(n-n) + '<br>'
-
-        + ('-').repeat(n-1) + ('*').repeat(n-2) + '<br>'
-
-        + ('-').repeat(n-2) + ('*').repeat(n-1) + '<br>'
-
-        + ('-').repeat(n-n) + ('*').repeat(n);
-
-        document.getElementById('three').innerHTML =
-        ('-').repeat(n) + ('*').repeat(n-n) + '<br>'
-
-        + ('-').repeat(n-1) + ('*').repeat(n-2) + '<br>'
-
-        + ('-').repeat(n-2) + ('*').repeat(n-1) + '<br>'
-
-        + ('-').repeat(n-n) + ('*').repeat(n);
-
-        document.getElementById('four').innerHTML =
-        ('-').repeat(n) + ('*').repeat(n-n) + '<br>'
-
-        + ('-').repeat(n-1) + ('*').repeat(n-2) + '<br>'
-
-        + ('-').repeat(n-2) + ('*').repeat(n-1) + '<br>'
-
-        + ('-').repeat(n-n) + ('*').repeat(n);
-
-        document.getElementById('five').innerHTML =
-        ('-').repeat(n) + ('*').repeat(n-n) + '<br>'
-
-        + ('-').repeat(n-1) + ('*').repeat(n-2) + '<br>'
-
-        + ('-').repeat(n-2) + ('*').repeat(n-1) + '<br>'
-
-        + ('-').repeat(n-n) + ('*').repeat(n);
-
-        document.getElementById('six').innerHTML =
-        ('-').repeat(n) + ('*').repeat(n-n) + '<br>'
-
-        + ('-').repeat(n-1) + ('*').repeat(n-2) + '<br>'
-
-        + ('-').repeat(n-2) + ('*').repeat(n-1) + '<br>'
-
-        + ('-').repeat(n-n) + ('*').repeat(n);
-
-        document.getElementById('seven').innerHTML =
-        ('-').repeat(n) + ('*').repeat(n-n) + '<br>'
-
-        + ('-').repeat(n-1) + ('*').repeat(n-2) + '<br>'
-
-        + ('-').repeat(n-2) + ('*').repeat(n-1) + '<br>'
-
-        + ('-').repeat(n-n) + ('*').repeat(n);
-
-        document.getElementById('eight').innerHTML =
-        ('-').repeat(n) + ('*').repeat(n-n) + '<br>'
-
-        + ('-').repeat(n-1) + ('*').repeat(n-2) + '<br>'
-
-        + ('-').repeat(n-2) + ('*').repeat(n-1) + '<br>'
-
-        + ('-').repeat(n-n) + ('*').repeat(n);
-
-        document.getElementById('nine').innerHTML =
-        ('-').repeat(n) + ('*').repeat(n-n) + '<br>'
-
-        + ('-').repeat(n-1) + ('*').repeat(n-2) + '<br>'
-
-        + ('-').repeat(n-2) + ('*').repeat(n-1) + '<br>'
-
-        + ('-').repeat(n-n) + ('*').repeat(n);
-
-        document.getElementById('ten').innerHTML =
-        ('-').repeat(n) + ('*').repeat(n-n) + '<br>'
-
-        + ('-').repeat(n-1) + ('*').repeat(n-2) + '<br>'
-
-        + ('-').repeat(n-2) + ('*').repeat(n-1) + '<br>'
-
-        + ('-').repeat(n-n) + ('*').repeat(n);
+            document.getElementById('canvas').innerHTML +=
+                show(
+                    genCompStair(n),
+                    genCompTwo(n),
+                    flipVertCompTwo(n),
+                    flipHorizontally(genCompStair())
+                );
     }
+}
+
+function genCompStair (n) {
+
+    var stair = [];
+
+    for(var y = n; y >= 0; y--) {
+        stair = stair.concat(('-').repeat(n - (n - y)).concat(('*').repeat(n - y))) + '\n';
+    }
+
+    console.log(stair)
+    return stair;
+}
+
+function genCompTwo (n) {
+
+    var compTwo = [];
+
+    for(var y = n/2; y >= 0; y--) {
+        compTwo = compTwo.concat(('*').repeat(n)) + '\n';
+    }
+    for(var y = 0; y <= n/2; y++) {
+        compTwo = compTwo.concat(('*').repeat(Math.floor(n/2) - y).concat(('-').repeat(y+1)).concat(('-').repeat(y)).concat(('*').repeat(Math.floor(n/2) - y))) + '\n';
+    }
+
+    console.log(compTwo)
+    return compTwo;
+}
+
+function flipHorizontally (comp) {
 
 }
 
+function flipVertCompTwo (n) {
+
+    var flipCompTwo = [];
+
+    for(var y = 0; y <= n/2; y++) {
+        flipCompTwo = flipCompTwo.concat(('*').repeat(y).concat(('-').repeat((Math.floor(n/2) - y) + 1)).concat(('-').repeat(Math.floor(n/2) - y)).concat(('*').repeat(y))) + '\n';
+    }
+    for(var y = n/2; y >= 0; y--) {
+        flipCompTwo = flipCompTwo.concat(('*').repeat(n)) + '\n';
+    }
+
+    console.log(flipCompTwo)
+    return flipCompTwo;
+}
 
 function deleteLogo() {
     document.getElementById('canvas').innerHTML ='';
+}
+
+// function show (f1, f2, f3, f4, f5) {
+// }
+
+function show (arr) {
+    var toshow = '';
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = 0; j < arr[0].length; j++) {
+            toshow += arr[i][j];
+        }
+        toshow += '\n'
+    }
+
+    return toshow;
 }
