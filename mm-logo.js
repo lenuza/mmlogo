@@ -3,13 +3,18 @@ function drawLogo () {
 
     if(n%2 != 0 && n > 0 && n < 10000) {
 
-        document.getElementById('canvas').innerHTML +=
-        merge(
-            genCompStair(n),
-            genCompTwo(n),
-            flipVertCompTwo(n),
-            flipHorizontallyStair(n)
-        );
+        const merged =
+            merge(
+                genCompStair(n),
+                genCompTwo(n),
+                flipVertCompTwo(n),
+                flipHorizontallyStair(n)
+            );
+
+        console.log('N = ' + (document.getElementById('number').value));
+        console.log(merged);
+
+        document.getElementById('canvas').innerHTML = merged.replace(/\n/g, '<br>');
     }
 }
 
@@ -89,9 +94,6 @@ function showLine (concatArrays) {
         }
         toShow += '\n';
     }
-
-    console.log('N = ' + (document.getElementById('number').value));
-    console.log(toShow);
 
     return toShow;
 }
