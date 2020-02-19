@@ -4,7 +4,7 @@ function drawLogo () {
     if(n%2 != 0 && n > 0 && n < 10000) {
 
         document.getElementById('canvas').innerHTML +=
-        mergeSegments(
+        merge(
             genCompStair(n),
             genCompTwo(n),
             flipVertCompTwo(n),
@@ -63,7 +63,8 @@ function deleteLogo() {
     document.getElementById('canvas').innerHTML ='';
 }
 
-function mergeSegments (stair, compTwo, flipCompTwo, flipStair) {
+function merge (stair, compTwo, flipCompTwo, flipStair) {
+
     var concatArrays = new Array();
 
     concatArrays[0] = stair;
@@ -75,20 +76,22 @@ function mergeSegments (stair, compTwo, flipCompTwo, flipStair) {
     concatArrays[6] = compTwo;
     concatArrays[7] = flipCompTwo;
     concatArrays[8] = compTwo;
-    concatArrays[9] = flipStair
+    concatArrays[9] = flipStair;
 
     return showLine(concatArrays)
 }
 
 function showLine (concatArrays) {
-    var toshow = '';
-
+    var toShow = '';
     for (let j = 0; j < concatArrays[0].length; j++) {
         for (let i = 0; i < concatArrays.length; i++) {
-            toshow += concatArrays[i][j];
+            toShow += concatArrays[i][j];
         }
-        toshow += '\n';
+        toShow += '\n';
     }
 
-    return toshow;
+    console.log('N = ' + (document.getElementById('number').value));
+    console.log(toShow);
+
+    return toShow;
 }
